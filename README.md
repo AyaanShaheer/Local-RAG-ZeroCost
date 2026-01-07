@@ -14,13 +14,8 @@ End-to-end Retrieval-Augmented Generation (RAG) system with full DevOps pipeline
 
 ## 🏗️ Architecture
 
-```
-User → Streamlit UI → FastAPI → Ollama (LLM)
-                              ↓
-                          ChromaDB (Vector Store)
-                              ↓
-                    Prometheus + Grafana (Monitoring)
-```
+<img width="2816" height="1536" alt="Gemini_Generated_Image_ykl61tykl61tykl6" src="https://github.com/user-attachments/assets/051c009f-03c1-4fac-8bab-c764514e0ed5" />
+
 
 ## 🚀 Quick Start
 
