@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rag-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rag-frontend
+  template:
+    metadata:
+      labels:
+        app: rag-frontend
+    spec:
+      containers:
+      - name: ui
+        image: rag-frontend:v1
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8501
+        env:
+        - name: BACKEND_URL
+          value: "http://backend-service:8000"  # Talk to K8s Service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+spec:
+  selector:
+    app: rag-frontend
+  ports:
+    - protocol: TCP
+      port: 8502
+      targetPort: 8501
+  type: LoadBalancer  # Or NodePort, LoadBalancer works well with 'minikube tunnel'
