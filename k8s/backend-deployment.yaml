@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: api
-        image: rag-backend:v1
+        image: rag-backend:v2
         imagePullPolicy: Never  # Use the local image we just built
         ports:
         - containerPort: 8000

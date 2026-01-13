@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: rag-backend-monitor
+  namespace: monitoring
+  labels:
+    release: my-kube-prometheus-stack
+spec:
+  namespaceSelector:
+    matchNames:
+      - default
+  selector:
+    matchLabels:
+      app: rag-backend
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 15s
